@@ -1,8 +1,11 @@
+CC=gcc
+CFLAGS = -O3 -nostdlib -fPIC
+
 main.bin: loader.o
 	ld --oformat binary loader.o -o main.bin
 
 *.o: *.c
-	gcc -nostdlib -fPIC -o $@ -c $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
 	rm *.o main.bin
